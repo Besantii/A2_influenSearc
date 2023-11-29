@@ -8,7 +8,8 @@ import pandas as pd
 
 
 
-
+for nicho, hashtags in nichos_hashtags.items():
+    df.loc[df['challenges'].apply(lambda x: any(tag in x.lower() for tag in hashtags)), 'nicho'] = nicho
 
 nichos_opcoes = list(nichos_hashtags.keys())
 nicho_escolhido = st.selectbox("Escolha o nicho:", nichos_opcoes)
