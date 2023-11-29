@@ -1,27 +1,19 @@
 import streamlit as st
+import pandas as pd
 
-# Função para classificar o desafio
-def classificar_desafio(desafio):
-    return model.predict([desafio])[0]
+# ... (seu código anterior)
 
-# Título do aplicativo
-st.title("Classificador de Nicho TikTok")
-
-# Entrada de texto para o desafio
-desafio_usuario = st.text_input("Digite o desafio do TikTok:")
+# Carregar a base de dados dos influenciadores (substitua pelo seu próprio caminho e nome do arquivo)
+influenciadores_df = pd.read_csv('seu_arquivo.csv')
 
 # Barra de seleção para os nichos
 nichos_opcoes = list(nichos_hashtags.keys())
 nicho_escolhido = st.selectbox("Escolha o nicho:", nichos_opcoes)
 
-# Botão para classificar
-if st.button("Classificar"):
-    # Verificar se o usuário digitou algo
-    if desafio_usuario:
-        # Obter a previsão do modelo
-        predicao = classificar_desafio(desafio_usuario)
-        
-        # Exibir o resultado
-        st.success(f"O nicho do desafio é: {predicao}")
-    else:
-        st.warning("Por favor, digite um desafio para classificar.")
+# Botão para mostrar influenciadores relevantes
+if st.button("Mostrar Influenciadores"):
+    # Filtrar influenciadores com base no nicho escolhido
+    influenciadores_nicho = influenciadores_df[influenciadores_df['nicho'] == nicho_escolhido]
+
+    # Exibir a tabela de influenciadores
+    st.table(influenciadores_nicho)
