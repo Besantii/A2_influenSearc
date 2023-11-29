@@ -7,3 +7,4 @@ nicho_escolhido = st.selectbox("Escolha o nicho:", nichos_opcoes)
 # Exibir a seleção feita pelo usuário
 st.write(f"Você escolheu o nicho: {nicho_escolhido}")
 
+
