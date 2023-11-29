@@ -1,7 +1,7 @@
 import streamlit as st
 
 
-
+st.title('InfluenSearch')
 
 # Carregar os dados do arquivo .xlsx
 df = pd.read_excel('novo_arquivo_tiktok.xlsx')
