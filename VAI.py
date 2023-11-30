@@ -36,18 +36,18 @@ st.markdown(
     f"""
     <style>
         .reportview-container {{
-            background-color: {cor_fundo};
+            background-color: {#050505};
             color: {cor_texto};
         }}
         .sidebar .sidebar-content {{
-            background-color: {cor_fundo};
+            background-color: {#050505};
         }}
         .Widget {{
-            color: {cor_texto};
+            color: {#f8f8f8};
         }}
         .stButton {{
-            color: {cor_texto};
-            background-color: {cor_destaque};
+            color: {#f8f8f8};
+            background-color: {#49d4b7};
         }}
         .stButton:hover {{
             background-color: #3eb0a8;  /* Tom mais escuro ao passar o mouse */
