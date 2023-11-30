@@ -3,7 +3,7 @@ import pandas as pd
 
 
 
-st.title('InfluenSearch')
+st.title('InfluenSearch00')
 
 # Carregar os dados do arquivo .xlsx
 # df = pd.read_excel('novo_arquivo_tiktok.xlsx')
