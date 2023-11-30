@@ -1,4 +1,4 @@
-pandas
 scikit-learn
-streamlit
 openpyxl
+streamlit==1.10.0
+pandas==1.4.2
