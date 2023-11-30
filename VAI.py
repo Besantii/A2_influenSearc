@@ -17,7 +17,7 @@ def obter_autores_por_nicho(data, nicho_escolhido):
     return data[data['nicho'].str.lower() == nicho_escolhido.lower()]['author'].unique()
 
 # Interface do Streamlit
-st.title('Descobridor de Influenciadores por Nicho')
+st.title('INFLUENSEARCH')
 
 # Carregar dados
 df = carregar_dados('tabela.csv')
@@ -26,7 +26,7 @@ df = carregar_dados('tabela.csv')
 nicho_selecionado = st.selectbox('Escolha um nicho', NICHOS)
 
 # Botão para mostrar autores
-if st.button('Mostrar Autores'):
+if st.button('Mostrar Influencers'):
     autores = obter_autores_por_nicho(df, nicho_selecionado)
     st.write(f"Autores no nicho de {nicho_selecionado}:")
     st.write(autores)
