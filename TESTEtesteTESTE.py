@@ -1,9 +1,5 @@
 import streamlit as st
 import pandas as pd
-git clone https://github.com/chronossc/openpyxl.git
-cd openpyxl
-pip install .
-
 
 
 
