@@ -24,6 +24,8 @@ st.set_page_config(
     page_icon="✨",
     layout="wide",
     initial_sidebar_state="expanded",
+    background-color: #49d4b7
+    text
 )
 
 # Definindo as cores
@@ -31,31 +33,6 @@ cor_fundo = "#050505"  # Preto
 cor_texto = "#f8f8f8"  # Branco
 cor_destaque = "#49d4b7"  # Verdin-água
 
-# Personalizando o estilo da página
-st.markdown(
-    f"""
-    <style>
-        .reportview-container {{
-            background-color: {#050505};
-            color: {cor_texto};
-        }}
-        .sidebar .sidebar-content {{
-            background-color: {#050505};
-        }}
-        .Widget {{
-            color: {#f8f8f8};
-        }}
-        .stButton {{
-            color: {#f8f8f8};
-            background-color: {#49d4b7};
-        }}
-        .stButton:hover {{
-            background-color: #3eb0a8;  /* Tom mais escuro ao passar o mouse */
-        }}
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
 
 # Interface do Streamlit
 st.title('INFLUENSEARCH')
