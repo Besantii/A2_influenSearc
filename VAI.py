@@ -40,4 +40,4 @@ if st.button('Mostrar Influencers'):
     
     # Mostrar os nomes e links para os perfis de TikTok
     for _, row in autores_info.iterrows():
-        st.write(f"- [{row['author']}](row['tiktok_url'])")
+        st.write(f"- [{row['author']}]({row['tiktok_url']})")
