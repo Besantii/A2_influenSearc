@@ -3,7 +3,7 @@ import pandas as pd
 
 # Define os nichos disponíveis
 NICHOS = ['Moda', 'Religião', 'Música', 'Comédia', 'Viagem', 'Fitness', 'Arte']
-METRICAS = {'likes': 'Curtidas', 'comments': 'Comentários', 'shares': 'Compartilhamentos', 'plays': 'Vizualizações', 'author_followers': 'Seguidores'}
+METRICAS = {'likes': 'Curtidas', 'comments': 'Comentários', 'shares': 'Compartilhamentos', 'plays': 'Visualizações', 'author_followers': 'Seguidores'}
 
 # Função para carregar dados do CSV
 @st.cache
@@ -51,7 +51,4 @@ if st.button('Mostrar Influencers'):
     
     # Mostrar os nomes, links e número de seguidores para os perfis de TikTok
     for _, row in autores_info.iterrows():
-        if metrica_selecionada == 'author_followers':
-            st.write(f"- [{row['author']}](row['tiktok_url']) - {row['author_followers']} seguidores")
-        else:
-            st.write(f"- [{row['author']}](row['tiktok_url'])")
+        st.write(f"- [{row['author']}]({row['tiktok_url']})")
