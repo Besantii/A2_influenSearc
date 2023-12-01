@@ -16,7 +16,9 @@ def carregar_dados(filepath):
 # Função para obter autores por nicho e métrica de ordenação
 def obter_autores_por_nicho_e_metrica(data, nicho_escolhido, metrica):
     subset = data[data['nicho'].str.lower() == nicho_escolhido.lower()]
-    return subset.sort_values(by=metrica, ascending=False)['author'].unique()
+    sorted_subset = subset.sort_values(by=metrica, ascending=False)
+    autores_info = sorted_subset[['author', 'tiktok_url']].drop_duplicates()
+    return autores_info
 
 # Interface do Streamlit
 st.title('INFLUENSEARCH')
@@ -32,7 +34,10 @@ metrica_selecionada = st.selectbox('Escolha uma métrica de ordenação', METRIC
 
 # Botão para mostrar autores
 if st.button('Mostrar Influencers'):
-    autores = obter_autores_por_nicho_e_metrica(df, nicho_selecionado, metrica_selecionada)
+    autores_info = obter_autores_por_nicho_e_metrica(df, nicho_selecionado, metrica_selecionada)
+    
     st.write(f"Autores no nicho de {nicho_selecionado} ordenados por {metrica_selecionada}:")
-    st.write(autores)
-
+    
+    # Mostrar os nomes e links para os perfis de TikTok
+    for _, row in autores_info.iterrows():
+        st.write(f"- [{row['author']}](row['tiktok_url'])")
