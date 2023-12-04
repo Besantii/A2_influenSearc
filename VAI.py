@@ -1,11 +1,13 @@
 import streamlit as st
 import pandas as pd
 
-# Define os nichos disponíveis
+# Nichos
+
 NICHOS = ['Moda', 'Religião', 'Música', 'Comédia', 'Viagem', 'Fitness', 'Arte']
 METRICAS = {'likes': 'Curtidas', 'comments': 'Comentários', 'shares': 'Compartilhamentos', 'plays': 'Visualizações', 'author_followers': 'Seguidores'}
 
-# Função para carregar dados do CSV
+# Função do csv
+
 @st.cache
 def carregar_dados(filepath):
     data = pd.read_csv(filepath)
@@ -13,10 +15,10 @@ def carregar_dados(filepath):
     data['nicho'] = data['nicho'].astype(str)
     return data
 
-# Função para obter autores por nicho e métrica de ordenação
+# Função de autores por nicho e métrica
 def obter_autores_por_nicho_e_metrica(data, nicho_escolhido, metrica):
     if metrica == 'author_followers':
-        # Ordenar por followers de autor
+        # Ordenar por Seguidores
         subset = data[data['nicho'].str.lower() == nicho_escolhido.lower()]
         sorted_subset = subset.sort_values(by=metrica, ascending=False)
         autores_info = sorted_subset[['author', 'tiktok_url', 'author_followers']].drop_duplicates()
@@ -28,22 +30,28 @@ def obter_autores_por_nicho_e_metrica(data, nicho_escolhido, metrica):
 
     return autores_info
 
-# Interface do Streamlit
+# Titulo
+
 st.title('INFLUENSEARCH')
 
-# Carregar dados
+# Dados
+
 df = carregar_dados('tabela.csv')
 
-# Seleção do nicho
+# Selectbox
+
 nicho_selecionado = st.selectbox('Escolha um nicho', NICHOS)
 
-# Seleção da métrica de ordenação
+# Seleção da métrica
+
 metrica_selecionada = st.selectbox('Escolha uma métrica de ordenação', list(METRICAS.values()))
 
-# Inverter o dicionário para obter a métrica real com base na seleção do usuário
+# Inverter o dicionário para obter a métrica real com base na seleção do usuário (para deixar o nome em portugues na seleção, sem atrapalhar o código)
+
 metrica_selecionada = next(key for key, value in METRICAS.items() if value == metrica_selecionada)
 
 # Botão para mostrar autores
+
 if st.button('Mostrar Influencers'):
     autores_info = obter_autores_por_nicho_e_metrica(df, nicho_selecionado, metrica_selecionada)
     
